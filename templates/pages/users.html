@@ -1,0 +1,67 @@
+        <section class="page" id="users">
+          <div class="users-console">
+            <div class="users-console__hero">
+              <div>
+                <p class="eyebrow">Access control</p>
+                <h2>Пользователи и права доступа</h2>
+                <p>Управляйте аккаунтами, ролями и доступом к пользовательским и админским функциям Zeekr.</p>
+              </div>
+              <button class="btn btn--primary" type="button" data-section-jump="admin" data-quick-admin-tab="adminUsers">Добавить пользователя</button>
+            </div>
+
+            <div class="users-console__layout">
+              <div class="panel users-console__table">
+                <div class="panel__head">
+                  <h2>Список пользователей</h2>
+                  <span class="badge">Role based access</span>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table" id="usersTable"></table>
+                </div>
+              </div>
+
+              <aside class="users-console__aside">
+                <article class="panel role-card role-card--compact">
+                  <div class="role-card__top">
+                    <span class="role-card__icon">G</span>
+                    <span class="badge">Гость</span>
+                  </div>
+                  <h2>Гость</h2>
+                  <p>Поиск и просмотр результатов без сохранения персональных действий.</p>
+                  <div class="permission-list">
+                    <span>Поиск</span>
+                    <span>Просмотр</span>
+                  </div>
+                </article>
+
+                <article class="panel role-card role-card--compact">
+                  <div class="role-card__top">
+                    <span class="role-card__icon">U</span>
+                    <span class="badge badge--halal">Пользователь</span>
+                  </div>
+                  <h2>Авторизованный</h2>
+                  <p>История, избранное, жалобы, предложения и голосование.</p>
+                  <div class="permission-list">
+                    <span>История</span>
+                    <span>Жалобы</span>
+                    <span>Голосование</span>
+                  </div>
+                </article>
+
+                <article class="panel role-card role-card--compact">
+                  <div class="role-card__top">
+                    <span class="role-card__icon">A</span>
+                    <span class="badge badge--danger">Админ</span>
+                  </div>
+                  <h2>Администратор</h2>
+                  <p>Полный доступ к справочникам, ролям, модерации, аналитике и настройкам.</p>
+                  <div class="permission-list">
+                    <span>Роли</span>
+                    <span>Справочники</span>
+                    <span>Аналитика</span>
+                  </div>
+                </article>
+              </aside>
+            </div>
+          </div>
+        </section>

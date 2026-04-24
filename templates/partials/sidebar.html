@@ -1,0 +1,55 @@
+      <aside class="sidebar">
+        <a class="brand" href="#home" aria-label="Zeekr">
+          <span class="brand__mark">✦</span>
+          <span>
+            <strong>Zeekr</strong>
+            <small>проверка без догадок</small>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav__link active" href="#home" data-section="home">
+            <span class="nav__icon">⌕</span>
+            <span>Проверка</span>
+          </a>
+          <a class="nav__link" href="#auth" data-section="auth" id="authNavLink">
+            <span class="nav__icon">⎋</span>
+            <span>Вход</span>
+          </a>
+          <a class="nav__link" href="#ingredients" data-section="ingredients">
+            <span class="nav__icon">◌</span>
+            <span>Ингредиенты</span>
+          </a>
+          <a class="nav__link" href="#brands" data-section="brands">
+            <span class="nav__icon">◇</span>
+            <span>Бренды</span>
+          </a>
+          <a class="nav__link" href="#boycott" data-section="boycott">
+            <span class="nav__icon">✕</span>
+            <span>Бойкот</span>
+          </a>
+          <a class="nav__link auth-only" href="#reports" data-section="reports">
+            <span class="nav__icon">✎</span>
+            <span>Жалобы</span>
+          </a>
+          <a class="nav__link admin-only" href="#users" data-section="users">
+            <span class="nav__icon">◫</span>
+            <span>Пользователи</span>
+          </a>
+          <a class="nav__link admin-only" href="#admin" data-section="admin">
+            <span class="nav__icon">⚙</span>
+            <span>Админка</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__actions">
+          <span class="user-pill" id="userPill">Гость</span>
+          <button class="btn btn--ghost" type="button" data-open-report>Сообщить</button>
+          <button class="btn btn--primary" type="button" id="authActionBtn">Войти</button>
+        </div>
+
+        <div class="sidebar__status">
+          <span class="status-dot"></span>
+          <span>Демо-режим</span>
+        </div>
+      </aside>

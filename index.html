@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1D9E75" />
+    <title>Zeekr Halal Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="static/zeekr/css/styles.css" />
+    <link rel="stylesheet" href="static/zeekr/css/responsive.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#home" aria-label="Zeekr">
+          <span class="brand__mark">✦</span>
+          <span>
+            <strong>Zeekr</strong>
+            <small>проверка без догадок</small>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav__link active" href="#home" data-section="home">
+            <span class="nav__icon">⌕</span>
+            <span>Проверка</span>
+          </a>
+          <a class="nav__link" href="#auth" data-section="auth" id="authNavLink">
+            <span class="nav__icon">⎋</span>
+            <span>Вход</span>
+          </a>
+          <a class="nav__link is-hidden" href="#ingredients" data-section="ingredients">
+            <span class="nav__icon">◌</span>
+            <span>Ингредиенты</span>
+          </a>
+          <a class="nav__link" href="#brands" data-section="brands">
+            <span class="nav__icon">◇</span>
+            <span>Бренды</span>
+          </a>
+          <a class="nav__link" href="#boycott" data-section="boycott">
+            <span class="nav__icon">✕</span>
+            <span>Бойкот</span>
+          </a>
+          <a class="nav__link auth-only" href="#reports" data-section="reports">
+            <span class="nav__icon">✎</span>
+            <span>Жалобы</span>
+          </a>
+          <a class="nav__link admin-only" href="#users" data-section="users">
+            <span class="nav__icon">◫</span>
+            <span>Пользователи</span>
+          </a>
+          <a class="nav__link admin-only" href="#admin" data-section="admin">
+            <span class="nav__icon">⚙</span>
+            <span>Админка</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__actions">
+          <span class="user-pill" id="userPill">Гость</span>
+          <button class="btn btn--ghost" type="button" data-open-report>Сообщить</button>
+          <button class="btn btn--primary" type="button" id="authActionBtn">Войти</button>
+        </div>
+
+        <div class="sidebar__status">
+          <span class="status-dot"></span>
+          <span>Демо-режим</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <button class="icon-btn mobile-menu" type="button" aria-label="Открыть меню">☰</button>
+          <div>
+            <p class="eyebrow">Halal check без лишнего шума</p>
+            <h1>Понятная проверка состава, брендов и спорных ингредиентов</h1>
+          </div>
+        </header>
+
+        <section class="page" id="auth">
+          <section class="page-intro">
+            <p class="eyebrow">Личный доступ</p>
+            <h2>Сохраняйте проверки и возвращайтесь к ним позже</h2>
+            <p>Аккаунт нужен для истории, избранного, жалоб и предложений. Быстрый поиск работает и без входа.</p>
+          </section>
+
+          <div class="auth-layout">
+            <section class="panel auth-panel">
+              <div class="tabs" role="tablist" aria-label="Авторизация">
+                <button class="tabs__tab active" type="button" data-auth-tab="login">Вход</button>
+                <button class="tabs__tab" type="button" data-auth-tab="register">Регистрация</button>
+              </div>
+
+              <form class="auth-form active" id="loginForm">
+                <label>Email<input name="email" type="email" placeholder="you@example.com" required /></label>
+                <label>Пароль<input name="password" type="password" placeholder="Введите пароль" required /></label>
+                <button class="btn btn--primary" type="submit">Войти</button>
+              </form>
+
+              <form class="auth-form" id="registerForm">
+                <label>Имя<input name="name" placeholder="Ваше имя" required /></label>
+                <label>Email<input name="email" type="email" placeholder="you@example.com" required /></label>
+                <label>Пароль<input name="password" type="password" placeholder="Минимум 6 символов" minlength="6" required /></label>
+                <label>Страна<select name="country"><option>Кыргызстан</option><option>Казахстан</option><option>Узбекистан</option><option>США</option></select></label>
+                <label>Язык<select name="language"><option>Русский</option><option>English</option><option>Кыргызский</option></select></label>
+                <button class="btn btn--primary" type="submit">Создать аккаунт</button>
+              </form>
+            </section>
+
+            <aside class="panel auth-benefits">
+              <h2>Что появится после входа</h2>
+              <div class="permission-list permission-list--stack">
+                <span>История проверок</span>
+                <span>Избранные товары, бренды и ингредиенты</span>
+                <span>Жалобы на ошибки</span>
+                <span>Предложение новых товаров</span>
+                <span>Голосование за правильность информации</span>
+                <span>Настройки языка и страны</span>
+              </div>
+              <p class="auth-hint">Админ-разделы и список пользователей доступны только аккаунтам с ролью администратора.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="page active" id="home">
+          <section class="public-greeting">
+            <span class="public-greeting__badge">Для магазина, поездки и обычной полки дома</span>
+            <h2>Сначала короткий ответ. Потом — почему.</h2>
+            <p>Введите товар, бренд или состав с упаковки. Zeekr покажет статус, сомнительные места и объяснит результат человеческим языком.</p>
+            <div class="trust-strip" aria-label="Что показывает Zeekr">
+              <span>Итог без лишних терминов</span>
+              <span>Причина по ингредиентам</span>
+              <span>Отдельная отметка по бренду</span>
+            </div>
+            <div class="reading-guide" aria-label="Как читать результат">
+              <article>
+                <strong>Можно</strong>
+                <span>В составе не найдено красных флагов.</span>
+              </article>
+              <article>
+                <strong>Нужно уточнить</strong>
+                <span>Не хватает происхождения или точного источника.</span>
+              </article>
+              <article>
+                <strong>Нельзя</strong>
+                <span>Есть компонент, который лучше исключить.</span>
+              </article>
+            </div>
+          </section>
+
+          <div class="hero-grid">
+            <section class="panel panel--main">
+              <div class="tabs" role="tablist" aria-label="Тип проверки">
+                <button class="tabs__tab" type="button" data-mode="product">По названию</button>
+                <button class="tabs__tab active" type="button" data-mode="photo">По фото</button>
+              </div>
+
+              <div class="check-mode" data-panel="product">
+                <form class="search-form" data-search-form="product">
+                  <label for="productSearch">Название товара</label>
+                  <div class="search-row">
+                    <input id="productSearch" name="query" type="search" placeholder="Например: Kinder Bueno, Coca Cola Vanilla, E120" autocomplete="off" />
+                    <button class="btn btn--primary" type="submit">Проверить</button>
+                  </div>
+                  <div class="sample-row" aria-label="Быстрые примеры">
+                    <button class="sample-chip" type="button" data-sample-search="Kinder Bueno" data-sample-type="product">Kinder Bueno</button>
+                    <button class="sample-chip" type="button" data-sample-search="Gelatin" data-sample-type="ingredient">Gelatin</button>
+                    <button class="sample-chip" type="button" data-sample-search="Nestle" data-sample-type="brand">Nestle</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="check-mode active" data-panel="photo">
+                <div class="upload-zone scanner-flow" data-upload-zone>
+                  <input id="cameraInput" type="file" accept="image/*" capture="environment" />
+                  <input id="galleryInput" type="file" accept="image/*" />
+                  <input id="photoInput" type="file" accept="image/*" />
+                  <div class="scanner-flow__top">
+                    <button class="scanner-flow__back" type="button" data-mode-jump="product">← Отмена</button>
+                    <strong>Распознавание состава</strong>
+                  </div>
+                  <div class="scanner-frame">
+                    <img class="upload-zone__preview is-hidden" data-photo-preview alt="Фото состава" />
+                    <div class="scanner-frame__box"></div>
+                    <div class="scanner-frame__line"></div>
+                  </div>
+                  <strong class="scanner-flow__hint">Наведите камеру на текст состава продукта</strong>
+                  <div class="scanner-flow__info">
+                    AI проанализирует текст через OCR и выдаст результат по каждому ингредиенту.
+                  </div>
+                  <span class="scanner-flow__status" data-photo-status>Фото ещё не выбрано</span>
+                  <div class="photo-actions">
+                    <button class="btn btn--primary" type="button" data-photo-source="camera">
+                      <span class="btn__icon" aria-hidden="true">▣</span>
+                      Сфотографировать
+                    </button>
+                    <button class="btn btn--secondary" type="button" data-photo-source="gallery">Выбрать из галереи</button>
+                  </div>
+                </div>
+                <label class="ocr-textarea-label">OCR текст / ручной состав
+                  <textarea id="ocrText" placeholder="Gelatin, E120, Natural Flavors, E471"></textarea>
+                </label>
+                <button class="btn btn--primary wide" type="button" data-run-ocr>Разобрать состав</button>
+                <div class="ocr-pipeline" id="ocrPipeline" aria-live="polite"></div>
+              </div>
+            </section>
+
+            <aside class="panel stats-panel">
+              <h2>Что учитываем</h2>
+              <div class="metric metric--halal">
+                <span>Чистый состав</span>
+                <strong>95%</strong>
+              </div>
+              <div class="metric metric--doubtful">
+                <span>Неясное происхождение</span>
+                <strong>80%</strong>
+              </div>
+              <div class="metric metric--haram">
+                <span>Запрещенные компоненты</span>
+                <strong>99%</strong>
+              </div>
+              <p>Оценка зависит от состава, источника данных, качества OCR и полноты карточки товара.</p>
+            </aside>
+          </div>
+
+          <section class="result-layout">
+            <div class="panel" id="resultPanel">
+              <div class="empty-state">
+                <div class="empty-state__visual"></div>
+                <h2>Начните проверку</h2>
+                <p>Напишите название или выберите пример выше — результат появится здесь.</p>
+              </div>
+            </div>
+
+            <aside class="panel">
+              <div class="panel__head">
+                <h2>Фильтры</h2>
+              </div>
+              <div class="filter-list">
+                <button class="chip active" data-filter="all">Все</button>
+                <button class="chip" data-filter="halal">Можно</button>
+                <button class="chip" data-filter="haram">Нельзя</button>
+                <button class="chip" data-filter="doubtful">Нужно уточнить</button>
+                <button class="chip" data-filter="boycott">Бойкот</button>
+                <button class="chip" data-filter="no-gelatin">Без желатина</button>
+                <button class="chip" data-filter="no-e120">Без E120</button>
+              </div>
+            </aside>
+          </section>
+        </section>
+
+        <section class="page" id="productDetail">
+          <div class="detail-page">
+            <button class="btn btn--secondary btn--sm" type="button" data-section-jump="home">Назад к проверке</button>
+            <div class="panel" id="productDetailPanel">
+              <div class="empty-state">
+                <div class="empty-state__visual"></div>
+                <h2>Выберите продукт</h2>
+                <p>Полная информация откроется после проверки товара.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="ingredients">
+          <div class="panel">
+            <div class="panel__head">
+              <h2>База ингредиентов</h2>
+              <button class="btn btn--secondary btn--sm" type="button" data-add-demo="ingredient">Предложить</button>
+            </div>
+            <form class="search-form page-search" data-search-form="ingredient">
+              <label for="ingredientSearch">Проверить ингредиент отдельно</label>
+              <div class="search-row">
+                <input id="ingredientSearch" name="query" type="search" placeholder="Gelatin, E120, Carmine, Lecithin, E471" autocomplete="off" />
+                <button class="btn btn--primary" type="submit">Найти</button>
+              </div>
+            </form>
+            <div class="table-wrap">
+              <table class="data-table" id="ingredientsTable"></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="brands">
+          <div class="panel">
+            <div class="panel__head">
+              <h2>Бренды</h2>
+              <select id="brandCountry">
+                <option value="all">Все страны</option>
+                <option value="USA">USA</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Germany">Germany</option>
+              </select>
+            </div>
+            <form class="search-form page-search" data-search-form="brand">
+              <label for="brandSearch">Проверить бренд</label>
+              <div class="search-row">
+                <input id="brandSearch" name="query" type="search" placeholder="Nestle, Coca Cola, Pepsi, McDonald's" autocomplete="off" />
+                <button class="btn btn--primary" type="submit">Проверить</button>
+              </div>
+            </form>
+            <div class="card-grid" id="brandCards"></div>
+          </div>
+        </section>
+
+        <section class="page" id="boycott">
+          <div class="panel">
+            <div class="panel__head">
+              <h2>Мониторинг бойкота</h2>
+              <span class="badge badge--danger">3 активных</span>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="boycottTable"></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="cabinet">
+          <section class="page-intro page-intro--compact">
+            <p class="eyebrow">Личный кабинет</p>
+            <h2>Ваши проверки, избранное и настройки</h2>
+            <p>Здесь собирается то, к чему обычно хочется вернуться: спорные товары, отправленные предложения и голоса за корректность данных.</p>
+          </section>
+
+          <div class="cabinet-grid">
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Недавние проверки</h2>
+                <button class="btn btn--ghost btn--sm" type="button" data-clear-history>Очистить</button>
+              </div>
+              <div id="historyList" class="activity-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Сохраненное</h2>
+              </div>
+              <div id="favoritesList" class="activity-list"></div>
+            </div>
+            <div class="panel settings-panel">
+              <h2>Профиль и регион</h2>
+              <label>Имя<input id="profileName" value="Гость" /></label>
+              <label>Email<input id="profileEmail" value="Не авторизован" disabled /></label>
+              <label>Язык<select id="profileLanguage"><option>Русский</option><option>English</option><option>Кыргызский</option></select></label>
+              <label>Страна<select id="profileCountry"><option>Кыргызстан</option><option>Казахстан</option><option>США</option><option>Узбекистан</option></select></label>
+              <label class="toggle-row"><input id="profileNotifications" type="checkbox" checked /> Уведомления о результатах жалоб</label>
+              <button class="btn btn--primary" type="button" data-demo-action="Настройки профиля сохранены">Сохранить</button>
+              <button class="btn btn--secondary" type="button" id="logoutBtn">Выйти</button>
+            </div>
+          </div>
+
+          <div class="cabinet-grid cabinet-grid--secondary">
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Мои предложения</h2>
+              </div>
+              <div id="suggestionsList" class="activity-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Мои голоса</h2>
+              </div>
+              <div id="votesList" class="activity-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Откуда берутся данные</h2>
+                <span class="badge">Кеш Zeekr</span>
+              </div>
+              <div class="permission-list permission-list--stack">
+                <span>Open Food Facts / открытые каталоги</span>
+                <span>Партнерские каталоги и будущие интеграции</span>
+                <span>AI и распознавание состава</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="reports">
+          <section class="page-intro page-intro--compact">
+            <p class="eyebrow">Обратная связь</p>
+            <h2>Помогите сделать базу точнее</h2>
+            <p>Если состав изменился, статус кажется неверным или товара нет в базе, отправьте заметку. В демо она попадет в очередь модерации.</p>
+          </section>
+
+          <div class="cabinet-grid">
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Мои обращения</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-open-report>Сообщить об ошибке</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table"  id="myReportsTable"></table>
+              </div>
+            </div>
+            <div class="panel settings-panel">
+              <h2>Добавить товар в очередь</h2>
+              <form id="suggestProductForm" class="stack-form">
+                <label>Название<input name="name" placeholder="Название товара" required /></label>
+                <label>Бренд<input name="brand" placeholder="Бренд" /></label>
+                <label>Комментарий<textarea name="comment" placeholder="Где нашли, какой состав, что проверить"></textarea></label>
+                <button class="btn btn--primary" type="submit">Отправить на модерацию</button>
+              </form>
+            </div>
+            <div class="panel settings-panel">
+              <h2>Статусы</h2>
+              <div class="permission-list permission-list--stack">
+                <span>Новая жалоба</span>
+                <span>В работе</span>
+                <span>Принято</span>
+                <span>Отклонено</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="users">
+          <div class="users-console">
+            <div class="users-console__hero">
+              <div>
+                <p class="eyebrow">Access control</p>
+                <h2>Пользователи и права доступа</h2>
+                <p>Управляйте аккаунтами, ролями и доступом к пользовательским и админским функциям Zeekr.</p>
+              </div>
+              <button class="btn btn--primary" type="button" data-section-jump="admin" data-quick-admin-tab="adminUsers">Добавить пользователя</button>
+            </div>
+
+            <div class="users-console__layout">
+              <div class="panel users-console__table">
+                <div class="panel__head">
+                  <h2>Список пользователей</h2>
+                  <span class="badge">Role based access</span>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table" id="usersTable"></table>
+                </div>
+              </div>
+
+              <aside class="users-console__aside">
+                <article class="panel role-card role-card--compact">
+                  <div class="role-card__top">
+                    <span class="role-card__icon">G</span>
+                    <span class="badge">Гость</span>
+                  </div>
+                  <h2>Гость</h2>
+                  <p>Поиск и просмотр результатов без сохранения персональных действий.</p>
+                  <div class="permission-list">
+                    <span>Поиск</span>
+                    <span>Просмотр</span>
+                  </div>
+                </article>
+
+                <article class="panel role-card role-card--compact">
+                  <div class="role-card__top">
+                    <span class="role-card__icon">U</span>
+                    <span class="badge badge--halal">Пользователь</span>
+                  </div>
+                  <h2>Авторизованный</h2>
+                  <p>История, избранное, жалобы, предложения и голосование.</p>
+                  <div class="permission-list">
+                    <span>История</span>
+                    <span>Жалобы</span>
+                    <span>Голосование</span>
+                  </div>
+                </article>
+
+                <article class="panel role-card role-card--compact">
+                  <div class="role-card__top">
+                    <span class="role-card__icon">A</span>
+                    <span class="badge badge--danger">Админ</span>
+                  </div>
+                  <h2>Администратор</h2>
+                  <p>Полный доступ к справочникам, ролям, модерации, аналитике и настройкам.</p>
+                  <div class="permission-list">
+                    <span>Роли</span>
+                    <span>Справочники</span>
+                    <span>Аналитика</span>
+                  </div>
+                </article>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="admin">
+          <div class="admin-console">
+            <div class="admin-console__hero">
+              <div>
+                <p class="eyebrow">Панель управления Zeekr</p>
+                <h2>Все данные проверки в одном рабочем месте</h2>
+                <p>Товары, бренды, ингредиенты, жалобы и правила анализа собраны так, чтобы быстро вносить правки и видеть состояние системы.</p>
+              </div>
+              <button class="btn btn--primary" type="button" data-demo-action="Источники синхронизированы">Синхронизировать источники</button>
+            </div>
+
+            <div class="admin-grid">
+              <div class="panel analytics-card"><span>Пользователи</span><strong>1 284</strong></div>
+              <div class="panel analytics-card"><span>Проверки</span><strong>18 940</strong></div>
+              <div class="panel analytics-card"><span>Жалобы</span><strong>42</strong></div>
+              <div class="panel analytics-card"><span>Бренды в бойкоте</span><strong>12</strong></div>
+            </div>
+
+            <div class="admin-console__layout">
+              <div class="panel admin-console__main">
+            <div class="admin-tabs" role="tablist" aria-label="Админ разделы">
+              <button class="admin-tabs__tab active" type="button" data-admin-tab="adminUsers">Пользователи</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminRoles">Роли</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminModerators">Модераторы</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminProducts">Товары</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminBrands">Бренды</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminIngredients">Ингредиенты</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminRules">Логика</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminSources">Источники</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminSettings">Настройки</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminQueue">Модерация</button>
+            </div>
+
+            <div class="admin-tab-panel active" id="adminUsers">
+              <div class="panel__head">
+                <h2>Управление пользователями</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Форма создания пользователя будет подключена к Django Auth">Создать пользователя</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="adminUsersTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminRoles">
+              <div class="panel__head">
+                <h2>Управление ролями</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Новая роль будет сохраняться через backend">Новая роль</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="rolesTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminModerators">
+              <div class="panel__head">
+                <h2>Модераторы</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Назначение модератора будет подключено к backend">Назначить модератора</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="moderatorsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminProducts">
+              <div class="panel__head">
+                <h2>Товары</h2>
+                <span class="badge">Внутренний кеш Zeekr</span>
+              </div>
+              <form class="admin-form-grid" id="adminProductForm">
+                <label>Название<input name="name" placeholder="Например: Halal Choco Bar" required /></label>
+                <label>Бренд<input name="brand" placeholder="Название бренда" required /></label>
+                <label>Категория<input name="category" placeholder="Сладости, напитки..." required /></label>
+                <label>Страна<input name="country" placeholder="Кыргызстан" required /></label>
+                <label>Штрихкод<input name="barcode" placeholder="Если есть" /></label>
+                <label>Источник<select name="source"><option>Внесено админом</option><option>Внешний каталог</option><option>Партнерский каталог</option></select></label>
+                <label class="admin-form-grid__wide">Состав<input name="composition" placeholder="Sugar, Lecithin, Natural Flavors" required /></label>
+                <label class="admin-form-grid__wide">Альтернативы<input name="alternatives" placeholder="Альтернатива 1, Альтернатива 2" /></label>
+                <button class="btn btn--primary" type="submit">Добавить товар</button>
+              </form>
+              <div class="table-wrap">
+                <table class="data-table" id="adminProductsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminBrands">
+              <div class="panel__head">
+                <h2>Бренды</h2>
+                <span class="badge">Открытые источники и внутренний справочник</span>
+              </div>
+              <form class="admin-form-grid" id="adminBrandForm">
+                <label>Название<input name="name" placeholder="Например: Local Halal" required /></label>
+                <label>Страна<input name="country" placeholder="Кыргызстан" required /></label>
+                <label>Категории<input name="categories" placeholder="Напитки, сладости" required /></label>
+                <label>Бойкот<select name="boycott"><option value="false">Нет</option><option value="true">Да</option></select></label>
+                <label class="admin-form-grid__wide">Причина / описание<input name="reason" placeholder="Причина или краткое описание" /></label>
+                <label class="admin-form-grid__wide">Halal-товары<input name="halal" placeholder="Товар 1, Товар 2" /></label>
+                <button class="btn btn--primary" type="submit">Добавить бренд</button>
+              </form>
+              <div class="table-wrap">
+                <table class="data-table" id="adminBrandsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminIngredients">
+              <div class="panel__head">
+                <h2>Справочник ингредиентов</h2>
+                <span class="badge">Можно / Нельзя / Уточнить</span>
+              </div>
+              <form class="admin-form-grid" id="adminIngredientForm">
+                <label>Название<input name="name" placeholder="Например: Gelatin" required /></label>
+                <label>Синонимы<input name="aliases" placeholder="E441, желатин" /></label>
+                <label>Категория<input name="category" placeholder="Стабилизатор" required /></label>
+                <label>Статус<select name="status"><option value="halal">Можно</option><option value="haram">Нельзя</option><option value="doubtful">Нужно уточнить</option></select></label>
+                <label>Происхождение<input name="origin" placeholder="Растительное, животное, неизвестно" /></label>
+                <label>Где используется<input name="used" placeholder="Сладости, напитки..." /></label>
+                <label class="admin-form-grid__wide">Причина<input name="reason" placeholder="Почему такой статус" required /></label>
+                <button class="btn btn--primary" type="submit">Добавить ингредиент</button>
+              </form>
+              <div class="table-wrap">
+                <table class="data-table" id="adminIngredientsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminRules">
+              <div class="panel__head">
+                <h2>Логика проверки</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Правила проверки сохранены в демо-режиме">Сохранить правила</button>
+              </div>
+              <div class="rule-grid">
+                <article class="rule-card">
+                  <strong>Запрещенные компоненты важнее всего</strong>
+                  <p>Если найден pork, alcohol, lard, E120 или желатин с запрещенным источником, итоговый статус становится «Нельзя».</p>
+                </article>
+                <article class="rule-card">
+                  <strong>Если данных не хватает</strong>
+                  <p>Ароматизаторы, ферменты, E471 и желатин неизвестного происхождения получают статус «Нужно уточнить».</p>
+                </article>
+                <article class="rule-card">
+                  <strong>Уверенность без магии</strong>
+                  <p>Учитываются источник данных, точность распознавания, полнота состава и совпадение ингредиентов.</p>
+                </article>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="rulesTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminSources">
+              <div class="panel__head">
+                <h2>Внешние источники и кеш</h2>
+                <span class="badge">Открытые данные / партнеры / база Zeekr</span>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="sourcesTable"></table>
+              </div>
+              <div class="panel__head admin-subhead">
+                <h2>Кеш проверенных товаров</h2>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="cacheTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminSettings">
+              <div class="panel__head">
+                <h2>Настройки проекта</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Настройки проекта сохранены">Сохранить</button>
+              </div>
+              <div class="admin-form-grid">
+                <label>Основной язык<select><option>Русский</option><option>English</option><option>Кыргызский</option></select></label>
+                <label>Страна по умолчанию<select><option>Кыргызстан</option><option>Казахстан</option><option>Узбекистан</option></select></label>
+                <label>Распознавание состава<select><option>Tesseract OCR</option><option>Облачное OCR</option></select></label>
+                <label>AI-анализ<select><option>Включен</option><option>Выключен</option></select></label>
+                <label>Кеш внешних источников<select><option>24 часа</option><option>7 дней</option><option>30 дней</option></select></label>
+                <label>Хранение файлов<select><option>Cloudflare R2</option><option>AWS S3</option><option>Локальное хранилище</option></select></label>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminQueue">
+            <div class="panel__head">
+              <h2>Очередь модерации</h2>
+              <button class="btn btn--secondary btn--sm" type="button" data-demo-action="Экспорт очереди будет доступен после подключения backend">Экспорт</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="moderationTable"></table>
+            </div>
+            </div>
+              </div>
+
+              <aside class="admin-console__side">
+                <div class="panel admin-quick-card">
+                  <h2>Быстрые действия</h2>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminProducts">Добавить товар</button>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminBrands">Добавить бренд</button>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminIngredients">Добавить ингредиент</button>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminQueue">Открыть модерацию</button>
+                </div>
+                <div class="panel admin-quick-card">
+                  <h2>Состояние системы</h2>
+                  <div class="permission-list permission-list--stack">
+                    <span>Распознавание: Tesseract готов</span>
+                    <span>AI-анализ: включен</span>
+                    <span>Кеш: 24 часа</span>
+                    <span>Файлы: Cloudflare R2</span>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="report-modal" id="reportModal">
+      <form method="dialog" class="modal-card" id="reportForm">
+        <div class="panel__head">
+          <h2>Сообщить об ошибке</h2>
+          <button class="icon-btn" type="button" data-close-report aria-label="Закрыть">×</button>
+        </div>
+        <label>Тип проблемы
+          <div class="custom-select" data-custom-select>
+            <input type="hidden" name="type" value="Неверный статус" />
+            <button class="custom-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span>Неверный статус</span>
+            </button>
+            <div class="custom-select__menu" role="listbox">
+              <button type="button" role="option" data-value="Неверный статус" aria-selected="true">Неверный статус</button>
+              <button type="button" role="option" data-value="Неверный состав">Неверный состав</button>
+              <button type="button" role="option" data-value="Нет товара">Нет товара</button>
+            </div>
+          </div>
+        </label>
+        <label>Комментарий<textarea name="comment" placeholder="Опишите проблему" required></textarea></label>
+        <div class="modal-actions">
+          <button class="btn btn--secondary" type="button" data-close-report>Отмена</button>
+          <button class="btn btn--primary" value="default">Отправить</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="static/zeekr/js/data.js"></script>
+    <script src="static/zeekr/js/core.js"></script>
+    <script src="static/zeekr/js/app.js"></script>
+    <script src="static/zeekr/js/init.js"></script>
+  </body>
+</html>

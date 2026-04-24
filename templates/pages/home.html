@@ -1,0 +1,142 @@
+        <section class="page active" id="home">
+          <section class="public-greeting">
+            <span class="public-greeting__badge">Для магазина, поездки и обычной полки дома</span>
+            <h2>Сначала короткий ответ. Потом — почему.</h2>
+            <p>Введите товар, бренд или состав с упаковки. Zeekr покажет статус, сомнительные места и объяснит результат человеческим языком.</p>
+            <div class="trust-strip" aria-label="Что показывает Zeekr">
+              <span>Итог без лишних терминов</span>
+              <span>Причина по ингредиентам</span>
+              <span>Отдельная отметка по бренду</span>
+            </div>
+            <div class="reading-guide" aria-label="Как читать результат">
+              <article>
+                <strong>Можно</strong>
+                <span>В составе не найдено красных флагов.</span>
+              </article>
+              <article>
+                <strong>Нужно уточнить</strong>
+                <span>Не хватает происхождения или точного источника.</span>
+              </article>
+              <article>
+                <strong>Нельзя</strong>
+                <span>Есть компонент, который лучше исключить.</span>
+              </article>
+            </div>
+          </section>
+
+          <div class="hero-grid">
+            <section class="panel panel--main">
+              <div class="tabs" role="tablist" aria-label="Тип проверки">
+                <button class="tabs__tab" type="button" data-mode="product">По названию</button>
+                <button class="tabs__tab active" type="button" data-mode="photo">По фото</button>
+              </div>
+
+              <div class="check-mode" data-panel="product">
+                <form class="search-form" data-search-form="product">
+                  <label for="productSearch">Название товара</label>
+                  <div class="search-row">
+                    <input id="productSearch" name="query" type="search" placeholder="Например: Kinder Bueno, Coca Cola Vanilla, E120" autocomplete="off" />
+                    <button class="btn btn--primary" type="submit">Проверить</button>
+                  </div>
+                  <div class="sample-row" aria-label="Быстрые примеры">
+                    <button class="sample-chip" type="button" data-sample-search="Kinder Bueno" data-sample-type="product">Kinder Bueno</button>
+                    <button class="sample-chip" type="button" data-sample-search="Gelatin" data-sample-type="ingredient">Gelatin</button>
+                    <button class="sample-chip" type="button" data-sample-search="Nestle" data-sample-type="brand">Nestle</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="check-mode active" data-panel="photo">
+                <div class="upload-zone scanner-flow" data-upload-zone>
+                  <input id="cameraInput" type="file" accept="image/*" capture="environment" />
+                  <input id="galleryInput" type="file" accept="image/*" />
+                  <input id="photoInput" type="file" accept="image/*" />
+                  <div class="scanner-flow__top">
+                    <button class="scanner-flow__back" type="button" data-mode-jump="product">← Отмена</button>
+                    <strong>Распознавание состава</strong>
+                  </div>
+                  <div class="scanner-frame">
+                    <img class="upload-zone__preview is-hidden" data-photo-preview alt="Фото состава" />
+                    <div class="scanner-frame__box"></div>
+                    <div class="scanner-frame__line"></div>
+                  </div>
+                  <strong class="scanner-flow__hint">Наведите камеру на текст состава продукта</strong>
+                  <div class="scanner-flow__info">
+                    AI проанализирует текст через OCR и выдаст результат по каждому ингредиенту.
+                  </div>
+                  <span class="scanner-flow__status" data-photo-status>Фото ещё не выбрано</span>
+                  <div class="photo-actions">
+                    <button class="btn btn--primary" type="button" data-photo-source="camera">
+                      <span class="btn__icon" aria-hidden="true">▣</span>
+                      Сфотографировать
+                    </button>
+                    <button class="btn btn--secondary" type="button" data-photo-source="gallery">Выбрать из галереи</button>
+                  </div>
+                </div>
+                <label class="ocr-textarea-label">OCR текст / ручной состав
+                  <textarea id="ocrText" placeholder="Gelatin, E120, Natural Flavors, E471"></textarea>
+                </label>
+                <button class="btn btn--primary wide" type="button" data-run-ocr>Разобрать состав</button>
+                <div class="ocr-pipeline" id="ocrPipeline" aria-live="polite">
+                  <div class="ocr-step">
+                    <span>1</span>
+                    <strong>Фото состава</strong>
+                    <p>Загрузите изображение упаковки или состава.</p>
+                  </div>
+                  <div class="ocr-step">
+                    <span>2</span>
+                    <strong>OCR распознавание</strong>
+                    <p>Текст будет очищен и подготовлен к разбору.</p>
+                  </div>
+                  <div class="ocr-step">
+                    <span>3</span>
+                    <strong>Проверка ингредиентов</strong>
+                    <p>Каждый компонент получит понятный статус: можно, нельзя или нужно уточнить.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="panel stats-panel">
+              <h2>Что учитываем</h2>
+              <div class="metric metric--halal">
+                <span>Чистый состав</span>
+                <strong>95%</strong>
+              </div>
+              <div class="metric metric--doubtful">
+                <span>Неясное происхождение</span>
+                <strong>80%</strong>
+              </div>
+              <div class="metric metric--haram">
+                <span>Запрещенные компоненты</span>
+                <strong>99%</strong>
+              </div>
+              <p>Оценка зависит от состава, источника данных, качества OCR и полноты карточки товара.</p>
+            </aside>
+          </div>
+
+          <section class="result-layout">
+            <div class="panel" id="resultPanel">
+              <div class="empty-state">
+                <div class="empty-state__visual"></div>
+                <h2>Начните проверку</h2>
+                <p>Напишите название или выберите пример выше — результат появится здесь.</p>
+              </div>
+            </div>
+
+            <aside class="panel">
+              <div class="panel__head">
+                <h2>Фильтры</h2>
+              </div>
+              <div class="filter-list">
+                <button class="chip active" data-filter="all">Все</button>
+                <button class="chip" data-filter="halal">Можно</button>
+                <button class="chip" data-filter="haram">Нельзя</button>
+                <button class="chip" data-filter="doubtful">Нужно уточнить</button>
+                <button class="chip" data-filter="boycott">Бойкот</button>
+                <button class="chip" data-filter="no-gelatin">Без желатина</button>
+                <button class="chip" data-filter="no-e120">Без E120</button>
+              </div>
+            </aside>
+          </section>
+        </section>

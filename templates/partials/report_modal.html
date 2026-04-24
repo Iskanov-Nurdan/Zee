@@ -1,0 +1,25 @@
+    <dialog class="report-modal" id="reportModal">
+      <form method="dialog" class="modal-card" id="reportForm">
+        <div class="panel__head">
+          <h2>Сообщить об ошибке</h2>
+          <button class="icon-btn" type="button" data-close-report aria-label="Закрыть">×</button>
+        </div>
+        <label>Тип проблемы
+          <div class="custom-select" data-custom-select>
+            <input type="hidden" name="type" value="Неверный статус" />
+            <button class="custom-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span>Неверный статус</span>
+            </button>
+            <div class="custom-select__menu" role="listbox">
+              <button type="button" role="option" data-value="Неверный статус" aria-selected="true">Неверный статус</button>
+              <button type="button" role="option" data-value="Неверный состав">Неверный состав</button>
+              <button type="button" role="option" data-value="Нет товара">Нет товара</button>
+            </div>
+          </div>
+        </label>
+        <label>Комментарий<textarea name="comment" placeholder="Опишите проблему" required></textarea></label>
+        <div class="modal-actions">
+          <button class="btn btn--secondary" type="button" data-close-report>Отмена</button>
+          <button class="btn btn--primary" value="default">Отправить</button>
+        </div>
+      </form>

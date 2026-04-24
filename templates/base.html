@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1D9E75" />
+    <title>{% block title %}Zeekr Halal Check{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'zeekr/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'zeekr/css/responsive.css' %}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      {% include "partials/sidebar.html" %}
+
+      <main class="workspace">
+        {% include "partials/topbar.html" %}
+
+        {% block content %}
+          {% include "pages/auth.html" %}
+          {% include "pages/home.html" %}
+          {% include "pages/product_detail.html" %}
+          {% include "pages/ingredients.html" %}
+          {% include "pages/brands.html" %}
+          {% include "pages/boycott.html" %}
+          {% include "pages/cabinet.html" %}
+          {% include "pages/reports.html" %}
+          {% include "pages/users.html" %}
+          {% include "pages/admin.html" %}
+        {% endblock %}
+      </main>
+    </div>
+
+    {% include "partials/report_modal.html" %}
+
+    <script src="{% static 'zeekr/js/data.js' %}"></script>
+    <script src="{% static 'zeekr/js/core.js' %}"></script>
+    <script src="{% static 'zeekr/js/app.js' %}"></script>
+    <script src="{% static 'zeekr/js/init.js' %}"></script>
+  </body>
+</html>

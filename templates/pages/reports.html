@@ -1,0 +1,37 @@
+        <section class="page" id="reports">
+          <section class="page-intro page-intro--compact">
+            <p class="eyebrow">Обратная связь</p>
+            <h2>Помогите сделать базу точнее</h2>
+            <p>Если состав изменился, статус кажется неверным или товара нет в базе, отправьте заметку. В демо она попадет в очередь модерации.</p>
+          </section>
+
+          <div class="cabinet-grid">
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Мои обращения</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-open-report>Сообщить об ошибке</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="myReportsTable"></table>
+              </div>
+            </div>
+            <div class="panel settings-panel">
+              <h2>Добавить товар в очередь</h2>
+              <form id="suggestProductForm" class="stack-form">
+                <label>Название<input name="name" placeholder="Название товара" required /></label>
+                <label>Бренд<input name="brand" placeholder="Бренд" /></label>
+                <label>Комментарий<textarea name="comment" placeholder="Где нашли, какой состав, что проверить"></textarea></label>
+                <button class="btn btn--primary" type="submit">Отправить на модерацию</button>
+              </form>
+            </div>
+            <div class="panel settings-panel">
+              <h2>Статусы</h2>
+              <div class="permission-list permission-list--stack">
+                <span>Новая жалоба</span>
+                <span>В работе</span>
+                <span>Принято</span>
+                <span>Отклонено</span>
+              </div>
+            </div>
+          </div>
+        </section>

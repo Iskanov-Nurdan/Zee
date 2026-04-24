@@ -1,0 +1,45 @@
+        <section class="page" id="auth">
+          <section class="page-intro">
+            <p class="eyebrow">Личный доступ</p>
+            <h2>Сохраняйте проверки и возвращайтесь к ним позже</h2>
+            <p>Аккаунт нужен для истории, избранного, жалоб и предложений. Быстрый поиск работает и без входа.</p>
+          </section>
+
+          <div class="auth-layout">
+            <section class="panel auth-panel">
+              <div class="tabs" role="tablist" aria-label="Авторизация">
+                <button class="tabs__tab active" type="button" data-auth-tab="login">Вход</button>
+                <button class="tabs__tab" type="button" data-auth-tab="register">Регистрация</button>
+              </div>
+
+              <form class="auth-form active" id="loginForm">
+                <p class="form-note">Для демо-админа: admin@zeekr.app / admin123</p>
+                <label>Email<input name="email" type="email" placeholder="you@example.com" required /></label>
+                <label>Пароль<input name="password" type="password" placeholder="Введите пароль" required /></label>
+                <button class="btn btn--primary" type="submit">Войти</button>
+              </form>
+
+              <form class="auth-form" id="registerForm">
+                <label>Имя<input name="name" placeholder="Ваше имя" required /></label>
+                <label>Email<input name="email" type="email" placeholder="you@example.com" required /></label>
+                <label>Пароль<input name="password" type="password" placeholder="Минимум 6 символов" minlength="6" required /></label>
+                <label>Страна<select name="country"><option>Кыргызстан</option><option>Казахстан</option><option>Узбекистан</option><option>США</option></select></label>
+                <label>Язык<select name="language"><option>Русский</option><option>English</option><option>Кыргызский</option></select></label>
+                <button class="btn btn--primary" type="submit">Создать аккаунт</button>
+              </form>
+            </section>
+
+            <aside class="panel auth-benefits">
+              <h2>Что появится после входа</h2>
+              <div class="permission-list permission-list--stack">
+                <span>История проверок</span>
+                <span>Избранные товары, бренды и ингредиенты</span>
+                <span>Жалобы на ошибки</span>
+                <span>Предложение новых товаров</span>
+                <span>Голосование за правильность информации</span>
+                <span>Настройки языка и страны</span>
+              </div>
+              <p class="auth-hint">Админ-разделы и список пользователей доступны только аккаунтам с ролью администратора.</p>
+            </aside>
+          </div>
+        </section>

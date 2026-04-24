@@ -1,0 +1,21 @@
+        <section class="page" id="brands">
+          <div class="panel">
+            <div class="panel__head">
+              <h2>Бренды</h2>
+              <select id="brandCountry">
+                <option value="all">Все страны</option>
+                <option value="USA">USA</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Germany">Germany</option>
+              </select>
+            </div>
+            <form class="search-form page-search" data-search-form="brand">
+              <label for="brandSearch">Проверить бренд</label>
+              <div class="search-row">
+                <input id="brandSearch" name="query" type="search" placeholder="Nestle, Coca Cola, Pepsi, McDonald's" autocomplete="off" />
+                <button class="btn btn--primary" type="submit">Проверить</button>
+              </div>
+            </form>
+            <div class="card-grid" id="brandCards"></div>
+          </div>
+        </section>

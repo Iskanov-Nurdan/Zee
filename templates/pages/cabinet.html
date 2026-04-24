@@ -1,0 +1,59 @@
+        <section class="page" id="cabinet">
+          <section class="page-intro page-intro--compact">
+            <p class="eyebrow">Личный кабинет</p>
+            <h2>Ваши проверки, избранное и настройки</h2>
+            <p>Здесь собирается то, к чему обычно хочется вернуться: спорные товары, отправленные предложения и голоса за корректность данных.</p>
+          </section>
+
+          <div class="cabinet-grid">
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Недавние проверки</h2>
+                <button class="btn btn--ghost btn--sm" type="button" data-clear-history>Очистить</button>
+              </div>
+              <div id="historyList" class="activity-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Сохраненное</h2>
+              </div>
+              <div id="favoritesList" class="activity-list"></div>
+            </div>
+            <div class="panel settings-panel">
+              <h2>Профиль и регион</h2>
+              <label>Имя<input id="profileName" value="Гость" /></label>
+              <label>Email<input id="profileEmail" value="Не авторизован" disabled /></label>
+              <label>Язык<select id="profileLanguage"><option>Русский</option><option>English</option><option>Кыргызский</option></select></label>
+              <label>Страна<select id="profileCountry"><option>Кыргызстан</option><option>Казахстан</option><option>США</option><option>Узбекистан</option></select></label>
+              <label class="toggle-row"><input id="profileNotifications" type="checkbox" checked /> Уведомления о результатах жалоб</label>
+              <button class="btn btn--primary" type="button" data-demo-action="Настройки профиля сохранены">Сохранить</button>
+              <button class="btn btn--secondary" type="button" id="logoutBtn">Выйти</button>
+            </div>
+          </div>
+
+          <div class="cabinet-grid cabinet-grid--secondary">
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Мои предложения</h2>
+              </div>
+              <div id="suggestionsList" class="activity-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Мои голоса</h2>
+              </div>
+              <div id="votesList" class="activity-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head">
+                <h2>Откуда берутся данные</h2>
+                <span class="badge">Кеш Zeekr</span>
+              </div>
+              <div class="permission-list permission-list--stack">
+                <span>Open Food Facts / открытые каталоги</span>
+                <span>Партнерские каталоги и будущие интеграции</span>
+                <span>AI и распознавание состава</span>
+              </div>
+            </div>
+          </div>
+        </section>

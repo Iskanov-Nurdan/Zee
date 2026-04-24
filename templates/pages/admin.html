@@ -1,0 +1,210 @@
+        <section class="page" id="admin">
+          <div class="admin-console">
+            <div class="admin-console__hero">
+              <div>
+                <p class="eyebrow">Панель управления Zeekr</p>
+                <h2>Все данные проверки в одном рабочем месте</h2>
+                <p>Товары, бренды, ингредиенты, жалобы и правила анализа собраны так, чтобы быстро вносить правки и видеть состояние системы.</p>
+              </div>
+              <button class="btn btn--primary" type="button" data-demo-action="Источники синхронизированы">Синхронизировать источники</button>
+            </div>
+
+            <div class="admin-grid">
+              <div class="panel analytics-card"><span>Пользователи</span><strong>1 284</strong></div>
+              <div class="panel analytics-card"><span>Проверки</span><strong>18 940</strong></div>
+              <div class="panel analytics-card"><span>Жалобы</span><strong>42</strong></div>
+              <div class="panel analytics-card"><span>Бренды в бойкоте</span><strong>12</strong></div>
+            </div>
+
+            <div class="admin-console__layout">
+              <div class="panel admin-console__main">
+            <div class="admin-tabs" role="tablist" aria-label="Админ разделы">
+              <button class="admin-tabs__tab active" type="button" data-admin-tab="adminUsers">Пользователи</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminRoles">Роли</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminModerators">Модераторы</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminProducts">Товары</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminBrands">Бренды</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminIngredients">Ингредиенты</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminRules">Логика</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminSources">Источники</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminSettings">Настройки</button>
+              <button class="admin-tabs__tab" type="button" data-admin-tab="adminQueue">Модерация</button>
+            </div>
+
+            <div class="admin-tab-panel active" id="adminUsers">
+              <div class="panel__head">
+                <h2>Управление пользователями</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Форма создания пользователя будет подключена к Django Auth">Создать пользователя</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="adminUsersTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminRoles">
+              <div class="panel__head">
+                <h2>Управление ролями</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Новая роль будет сохраняться через backend">Новая роль</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="rolesTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminModerators">
+              <div class="panel__head">
+                <h2>Модераторы</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Назначение модератора будет подключено к backend">Назначить модератора</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="moderatorsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminProducts">
+              <div class="panel__head">
+                <h2>Товары</h2>
+                <span class="badge">Внутренний кеш Zeekr</span>
+              </div>
+              <form class="admin-form-grid" id="adminProductForm">
+                <label>Название<input name="name" placeholder="Например: Halal Choco Bar" required /></label>
+                <label>Бренд<input name="brand" placeholder="Название бренда" required /></label>
+                <label>Категория<input name="category" placeholder="Сладости, напитки..." required /></label>
+                <label>Страна<input name="country" placeholder="Кыргызстан" required /></label>
+                <label>Штрихкод<input name="barcode" placeholder="Если есть" /></label>
+                <label>Источник<select name="source"><option>Внесено админом</option><option>Внешний каталог</option><option>Партнерский каталог</option></select></label>
+                <label class="admin-form-grid__wide">Состав<input name="composition" placeholder="Sugar, Lecithin, Natural Flavors" required /></label>
+                <label class="admin-form-grid__wide">Альтернативы<input name="alternatives" placeholder="Альтернатива 1, Альтернатива 2" /></label>
+                <button class="btn btn--primary" type="submit">Добавить товар</button>
+              </form>
+              <div class="table-wrap">
+                <table class="data-table" id="adminProductsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminBrands">
+              <div class="panel__head">
+                <h2>Бренды</h2>
+                <span class="badge">Открытые источники и внутренний справочник</span>
+              </div>
+              <form class="admin-form-grid" id="adminBrandForm">
+                <label>Название<input name="name" placeholder="Например: Local Halal" required /></label>
+                <label>Страна<input name="country" placeholder="Кыргызстан" required /></label>
+                <label>Категории<input name="categories" placeholder="Напитки, сладости" required /></label>
+                <label>Бойкот<select name="boycott"><option value="false">Нет</option><option value="true">Да</option></select></label>
+                <label class="admin-form-grid__wide">Причина / описание<input name="reason" placeholder="Причина или краткое описание" /></label>
+                <label class="admin-form-grid__wide">Halal-товары<input name="halal" placeholder="Товар 1, Товар 2" /></label>
+                <button class="btn btn--primary" type="submit">Добавить бренд</button>
+              </form>
+              <div class="table-wrap">
+                <table class="data-table" id="adminBrandsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminIngredients">
+              <div class="panel__head">
+                <h2>Справочник ингредиентов</h2>
+                <span class="badge">Можно / Нельзя / Уточнить</span>
+              </div>
+              <form class="admin-form-grid" id="adminIngredientForm">
+                <label>Название<input name="name" placeholder="Например: Gelatin" required /></label>
+                <label>Синонимы<input name="aliases" placeholder="E441, желатин" /></label>
+                <label>Категория<input name="category" placeholder="Стабилизатор" required /></label>
+                <label>Статус<select name="status"><option value="halal">Можно</option><option value="haram">Нельзя</option><option value="doubtful">Нужно уточнить</option></select></label>
+                <label>Происхождение<input name="origin" placeholder="Растительное, животное, неизвестно" /></label>
+                <label>Где используется<input name="used" placeholder="Сладости, напитки..." /></label>
+                <label class="admin-form-grid__wide">Причина<input name="reason" placeholder="Почему такой статус" required /></label>
+                <button class="btn btn--primary" type="submit">Добавить ингредиент</button>
+              </form>
+              <div class="table-wrap">
+                <table class="data-table" id="adminIngredientsTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminRules">
+              <div class="panel__head">
+                <h2>Логика проверки</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Правила проверки сохранены в демо-режиме">Сохранить правила</button>
+              </div>
+              <div class="rule-grid">
+                <article class="rule-card">
+                  <strong>Запрещенные компоненты важнее всего</strong>
+                  <p>Если найден pork, alcohol, lard, E120 или желатин с запрещенным источником, итоговый статус становится «Нельзя».</p>
+                </article>
+                <article class="rule-card">
+                  <strong>Если данных не хватает</strong>
+                  <p>Ароматизаторы, ферменты, E471 и желатин неизвестного происхождения получают статус «Нужно уточнить».</p>
+                </article>
+                <article class="rule-card">
+                  <strong>Уверенность без магии</strong>
+                  <p>Учитываются источник данных, точность распознавания, полнота состава и совпадение ингредиентов.</p>
+                </article>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="rulesTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminSources">
+              <div class="panel__head">
+                <h2>Внешние источники и кеш</h2>
+                <span class="badge">Открытые данные / партнеры / база Zeekr</span>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="sourcesTable"></table>
+              </div>
+              <div class="panel__head admin-subhead">
+                <h2>Кеш проверенных товаров</h2>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="cacheTable"></table>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminSettings">
+              <div class="panel__head">
+                <h2>Настройки проекта</h2>
+                <button class="btn btn--primary btn--sm" type="button" data-demo-action="Настройки проекта сохранены">Сохранить</button>
+              </div>
+              <div class="admin-form-grid">
+                <label>Основной язык<select><option>Русский</option><option>English</option><option>Кыргызский</option></select></label>
+                <label>Страна по умолчанию<select><option>Кыргызстан</option><option>Казахстан</option><option>Узбекистан</option></select></label>
+                <label>Распознавание состава<select><option>Tesseract OCR</option><option>Облачное OCR</option></select></label>
+                <label>AI-анализ<select><option>Включен</option><option>Выключен</option></select></label>
+                <label>Кеш внешних источников<select><option>24 часа</option><option>7 дней</option><option>30 дней</option></select></label>
+                <label>Хранение файлов<select><option>Cloudflare R2</option><option>AWS S3</option><option>Локальное хранилище</option></select></label>
+              </div>
+            </div>
+
+            <div class="admin-tab-panel" id="adminQueue">
+            <div class="panel__head">
+              <h2>Очередь модерации</h2>
+              <button class="btn btn--secondary btn--sm" type="button" data-demo-action="Экспорт очереди будет доступен после подключения backend">Экспорт</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="moderationTable"></table>
+            </div>
+            </div>
+              </div>
+
+              <aside class="admin-console__side">
+                <div class="panel admin-quick-card">
+                  <h2>Быстрые действия</h2>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminProducts">Добавить товар</button>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminBrands">Добавить бренд</button>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminIngredients">Добавить ингредиент</button>
+                  <button class="btn btn--secondary" type="button" data-quick-admin-tab="adminQueue">Открыть модерацию</button>
+                </div>
+                <div class="panel admin-quick-card">
+                  <h2>Состояние системы</h2>
+                  <div class="permission-list permission-list--stack">
+                    <span>Распознавание: Tesseract готов</span>
+                    <span>AI-анализ: включен</span>
+                    <span>Кеш: 24 часа</span>
+                    <span>Файлы: Cloudflare R2</span>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
