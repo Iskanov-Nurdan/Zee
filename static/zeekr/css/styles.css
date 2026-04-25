@@ -184,6 +184,53 @@ button { cursor: pointer; }
   gap: 8px;
 }
 
+.sidebar__contact-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-2);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.sidebar__contact-card:hover {
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.sidebar__contact-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--active);
+  flex: 0 0 auto;
+}
+
+.sidebar__contact-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sidebar__contact-text {
+  white-space: nowrap;
+}
+
 .status-dot {
   width: 8px;
   height: 8px;
@@ -1394,22 +1441,6 @@ body:not(.admin-shell) .sidebar__actions {
   margin-left: 0;
   min-width: 0;
   flex-wrap: nowrap;
-}
-
-body:not(.admin-shell) .sidebar__actions .btn {
-  min-height: 38px;
-  border-radius: 12px;
-  padding-inline: 14px;
-}
-
-body:not(.admin-shell) .sidebar__actions .btn--primary {
-  min-height: 48px;
-  padding-inline: 22px;
-}
-
-body:not(.admin-shell) .sidebar__actions .btn--ghost {
-  color: var(--text-2);
-  font-weight: 600;
 }
 
 body:not(.admin-shell) .workspace {

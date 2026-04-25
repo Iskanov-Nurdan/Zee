@@ -202,7 +202,7 @@ document.querySelector("[data-clear-history]").addEventListener("click", () => {
   renderLists();
 });
 document.querySelector("#brandCountry").addEventListener("change", renderBrandCards);
-document.querySelector("#authActionBtn").addEventListener("click", () => showSection(state.currentUser ? "cabinet" : "auth"));
+document.querySelector("#authActionBtn")?.addEventListener("click", () => showSection(state.currentUser ? "cabinet" : "auth"));
 document.querySelector("#loginForm").addEventListener("submit", event => {
   event.preventDefault();
   const data = Object.fromEntries(new FormData(event.currentTarget));

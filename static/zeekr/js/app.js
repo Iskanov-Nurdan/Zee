@@ -544,9 +544,12 @@ function bindDemoActions() {
 function renderAuthState() {
   const user = state.currentUser;
   const isAdmin = user?.role === "Администратор";
-  document.querySelector("#userPill").textContent = user ? `${user.name} · ${user.role}` : "Гость";
-  document.querySelector("#authActionBtn").textContent = user ? "Кабинет" : "Войти";
-  document.querySelector("#authNavLink").classList.toggle("is-hidden", Boolean(user));
+  const userPill = document.querySelector("#userPill");
+  const authActionBtn = document.querySelector("#authActionBtn");
+  const authNavLink = document.querySelector("#authNavLink");
+  if (userPill) userPill.textContent = user ? `${user.name} · ${user.role}` : "Гость";
+  if (authActionBtn) authActionBtn.textContent = user ? "Кабинет" : "Войти";
+  if (authNavLink) authNavLink.classList.toggle("is-hidden", Boolean(user));
   document.querySelector("#profileName").value = user?.name || "Гость";
   document.querySelector("#profileEmail").value = user?.email || "Не авторизован";
   document.querySelector("#profileLanguage").value = user?.language || "Русский";

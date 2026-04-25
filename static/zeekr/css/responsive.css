@@ -234,6 +234,12 @@
     margin-left: 0;
     overflow-x: auto;
     padding-bottom: 2px;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  body:not(.admin-shell) .sidebar__contact-card {
+    min-width: fit-content;
   }
 
   body:not(.admin-shell) .workspace {
